@@ -30,7 +30,7 @@ nickname varchar
 
 CREATE TABLE books_authors (
 id serial PRIMARY KEY,
-books_id int,
+books_id bigint,
 authors_id int,
 FOREIGN KEY (books_id) REFERENCES books (books_cipher) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (authors_id) REFERENCES authors (id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -39,8 +39,10 @@ FOREIGN KEY (authors_id) REFERENCES authors (id) ON DELETE CASCADE ON UPDATE CAS
 CREATE TABLE rented_books (
 id serial PRIMARY KEY,
 reader_tickets_number int,
-books_id int,
+books_id bigint,
 rent_status bool,
+rent_date date,
+return_date date,
 FOREIGN KEY (reader_tickets_number) REFERENCES readers (reader_tickets_number) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (books_id) REFERENCES books (books_cipher) ON DELETE CASCADE ON UPDATE CASCADE
 );
